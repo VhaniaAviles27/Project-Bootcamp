@@ -165,15 +165,18 @@
     transform: translateY(0);
 }
 
-.cardTitle {
+.cardTitle,
+.cardPrice {
     font-weight: bold;
 }
 
 .cardDescription {
     font-weight: normal;
 }
+
 .cardTitle,
-.cardDescription {
+.cardDescription,
+.cardPrice {
     margin: 5px;
     color: rgb(0, 0, 0);
     transition: all .3s ease-in-out;
@@ -183,11 +186,11 @@
     margin-top: 20px;
     border-radius: 10px;
     padding-block: 5px;
-    padding-inline: 40px;
+    padding-inline: 20px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #cad7fa;
-    border-color: #d6e1fe;
+    background-color: #fff8bc;
+    border-color: #f0ffd4;
 }
 
 .cardButton:hover {
@@ -221,9 +224,10 @@
 .textSimple,
 .textTitle,
 .cardTitle,
-.cardDescription {
+.cardDescription,
+.cardPrice {
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -258,16 +262,20 @@
 
     .productContainer {
         display: flex;
-        justify-content: space-between;
+        gap:55px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .cardAddContainer {
         display: flex;
         width: 18%;
     }
+
+    
 }
 
-@media (max-width: 600px) {
+@media (max-width: 690px) {
     .headerContainer,
     .footerContainer,
     .orderContainer,
@@ -287,8 +295,13 @@
         display: flex;
         width: 35%;
     }
+    
+    .cardTitle,
+    .cardDescription,
+    .cardPrice {
+        font-size: 12px ;
+    }
 }
-
 @media (max-width: 375px) {
     .headerContainer,
     .footerContainer,
@@ -307,6 +320,12 @@
 
     .cardAddContainer {
         width: 80%;
+    }
+
+    .cardTitle,
+    .cardDescription,
+    .cardPrice {
+        font-size: 10px ;
     }
 
 }

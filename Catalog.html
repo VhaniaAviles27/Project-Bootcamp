@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +22,7 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <button class="iconButton">
+                    <span id="cart-count" class="cart-count">0</span>
                     <i class="fas fa-cart-shopping"></i>
                 </button>
             </div>
@@ -41,69 +41,13 @@
                 </div>
 
                 <div class="dropdownContainer">
-                    <h2 class="subtitle">Ordenar por:</h2>
-                    <select class="selectContainer">
-                        <option>-- Selecciona una opcion --</option>
-                        <option>Mayor a menor precio</option>
-                        <option>Menor a mayor precio</option>
-                    </select>
+                    <h2 class="subtitle">Categorías:</h2>
+                    <select class="selectContainer"></select>
                 </div>
 
-                
-                
             </div>
             
-            <div class="productContainer">
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">AÑADIR</button>
-                </div>
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">AÑADIR</button>
-                </div>
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">AÑADIR</button>
-                </div>
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">AÑADIR</button>
-                </div>
-                
-            </div>
+            <div class="productContainer"></div>
 
             <div class="numberContainer">
                 <button class="iconButton">
@@ -137,6 +81,7 @@
 
     </div>
 
+    <script src="script.js"></script>
 
 </body>
 
