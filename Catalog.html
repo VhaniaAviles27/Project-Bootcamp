@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,73 +22,32 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <button class="iconButton">
+                    <span id="cart-count" class="cart-count">0</span>
                     <i class="fas fa-cart-shopping"></i>
                 </button>
             </div>
         </header>
         <div class="centralContainer">
             <div class="principalTitle">
-                <h2 class="textTitle">CATÁLOGO</h2>
+                <h2 class="textTitle">PRODUCTOS</h2>
                 <hr class="separator"></hr>
             </div>
 
             <div class="orderContainer">
 
-                <div class="dropdownContainer">
-                    <h2 class="subtitle">Ordenar por:</h2>
-                    <select class="selectContainer">
-                        <option>-- Selecciona una opcion --</option>
-                        <option>Mayor a menor precio</option>
-                        <option>Menor a mayor precio</option>
-                    </select>
-                </div>
-
                 <div class="searchContainer">
                     <i class="fas fa-magnifying-glass"></i>
                     <input class="inputContainer" placeholder="Buscar ...">
                 </div>
-                
+
+                <div class="dropdownContainer">
+                    <h2 class="subtitle">Categorías:</h2>
+                    <select class="selectContainer"></select>
+                </div>
+
             </div>
             
-            <div class="productContainer">
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">Añadir al carrito</button>
-                </div>
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">Añadir al carrito</button>
-                </div>
-
-                <div class="cardAddContainer">
-                    <div class="cardContainer">
-                        <img src="src/images/img-eggs.PNG" class="cardImage">
-                        <div class="cardDetails">
-                            <h3 class="cardTitle">Huevos</h3>
-                            <h4 class="cardDescription">Stock: 50</h4>
-                        </div>
-                        
-                    </div>
-                    <button class="cardButton">Añadir al carrito</button>
-                </div>
-                
-            </div>
+            <div class="productContainer"></div>
 
             <div class="numberContainer">
                 <button class="iconButton">
@@ -105,7 +63,7 @@
         </div>
         <footer class="footerContainer">
             <div class="copyrightContainer">
-                <p>Copyrigth | All rights reserved Mrs. Moon Design Company</p>
+                <p class="textSimple">Copyrigth | All rights reserved Mrs. Moon Design Company</p>
             </div>
             <div class="iconContainer">
                 <button class="iconButton">
@@ -123,6 +81,7 @@
 
     </div>
 
+    <script src="script.js"></script>
 
 </body>
 
