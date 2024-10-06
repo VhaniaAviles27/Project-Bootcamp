@@ -10,6 +10,13 @@ function updateCartCount() {
     cartCountElement.textContent = cartCount; 
 }
 
+function addCartEventListeners() {
+    const addToCartButtons = document.querySelectorAll('.cardButton');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
+}
+
 async function fetchProducts() {
     try {
         const response = await fetch('https://dummyjson.com/products');
@@ -19,7 +26,8 @@ async function fetchProducts() {
         const products = await response.json();
         return products.products;
     } catch (error) {
-        console.error(error);
+        console.error('Error al obtener los productos:', error);
+        return [];
     }
 }
 
@@ -27,12 +35,15 @@ function createProductCard(product) {
     const productCard = document.createElement('div');
     productCard.classList.add('cardAddContainer');
 
-    const cardContainer = document.createElement('div');
-    cardContainer.classList.add('cardContainer');
-
     const imageProduct = document.createElement('img');
     imageProduct.classList.add('cardImage');
     imageProduct.src = product.thumbnail;
+
+    const button = document.createElement('button');
+    button.classList.add('cardButton');
+    const iconCart = document.createElement('span');
+    iconCart.classList.add('fa', 'fa-shopping-cart');
+    const buttonText = document.createTextNode('Añadir')
 
     const cardDetails = document.createElement('div');
     cardDetails.classList.add('cardDetails');
@@ -48,20 +59,17 @@ function createProductCard(product) {
     const price = document.createElement('h4');
     price.classList.add('cardPrice');
     price.textContent = `Precio: ${product.price}`;
-
+    
     cardDetails.appendChild(title);
     cardDetails.appendChild(description);
     cardDetails.appendChild(price);
-    cardContainer.appendChild(imageProduct);
-    cardContainer.appendChild(cardDetails);
-    productCard.appendChild(cardContainer);
-
-    const button = document.createElement('button');
-    button.classList.add('cardButton');
-    button.textContent = 'AÑADIR';
-
+    productCard.appendChild(imageProduct);
     productCard.appendChild(button);
-    return productCard;
+    button.appendChild(iconCart);
+    button.appendChild(buttonText);
+    productCard.appendChild(cardDetails);
+    
+    return productCard;  
 }
 
 async function loadProducts() {
@@ -72,10 +80,7 @@ async function loadProducts() {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
-    const addToCartButtons = document.querySelectorAll('.cardButton');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', addToCart);
-    });
+    addCartEventListeners(); 
 }
 
 async function fetchCategories() {
@@ -87,7 +92,8 @@ async function fetchCategories() {
         const categories = await response.json();
         return categories;
     } catch (error) {
-        console.error(error);
+        console.error('Error al obtener las categorías:', error);
+        return [];
     }
 }
 
@@ -127,6 +133,7 @@ function filterProductsBySearch(query, products) {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
+    addCartEventListeners(); // Agregar event listeners después de filtrar productos
 }
 
 async function filterProductsByCategory(selectedCategory, allProducts) {
@@ -138,9 +145,22 @@ async function filterProductsByCategory(selectedCategory, allProducts) {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
+    addCartEventListeners(); // Agregar event listeners después de filtrar productos
 }
 
+
+function showLoading(isLoading){
+    const loadingElement = document.querySelector('.loadingScreen');
+    if(loadingElement) {
+        loadingElement.style.display = isLoading ? 'flex' : 'none';
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
+    
+    showLoading(true);
+
     const products = await fetchProducts();
     loadProducts();
     loadCategories();
@@ -160,4 +180,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             loadProducts();
         }
     });
+
+    showLoading(false);
+
 });
