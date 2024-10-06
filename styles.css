@@ -1,5 +1,16 @@
-/* Styles - Global */
+@import './assets/src/colors/colors.css';
+/* - */
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Styles - Global */
 .principalContainer {
     align-items: center;
     justify-content: center;
@@ -13,7 +24,6 @@
     padding-block: 10px;
     padding-inline: 15px;
     margin-inline: 40px;
-    background-color: #F0F2F5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -71,13 +81,11 @@
 .searchContainer {
     display: flex;
     align-items: center;
-    background-color: #cad7fa;
-    border-color: #d6e1fe;
     gap: 5px;
     padding-block: 10px;
     padding-inline: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .inputContainer {
@@ -94,13 +102,27 @@
 .selectContainer {
     background-color: transparent;
     border-color: transparent;
-    background-color: #cad7fa;
-    border-color: #d6e1fe;
     padding-block: 10px;
     padding-inline: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; /* Texto blanco */
+    font-size: 15px;
+    z-index: 1000;
+    flex-direction: column;
 }
 
 .productContainer {
@@ -116,23 +138,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-width: 5px;
     align-items: center;
-    background-color: #cad7fa;
-    border-color: #d6e1fe;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.cardContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
 
 .cardImage {
     width: 100%;
@@ -142,35 +154,20 @@
 }
 
 .cardDetails {
-    position: absolute;
-    background-color: hsla(0, 0%, 44%, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    opacity: 0;
-    transition: all .4s ease-in-out;
     border-radius: 10px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.cardContainer:hover .cardDetails {
-    opacity: 1;
-}
-
-.cardContainer:hover .cardTitle,
-.cardContainer:hover .cardDescription {
-    transform: translateY(0);
 }
 
 .cardTitle,
 .cardPrice {
     font-weight: bold;
+    font-size: 15px;
 }
 
 .cardDescription {
+    font-size: 12px;
     font-weight: normal;
 }
 
@@ -179,22 +176,28 @@
 .cardPrice {
     margin: 5px;
     color: rgb(0, 0, 0);
-    transition: all .3s ease-in-out;
 }
 
 .cardButton {
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-block: 20px;
     border-radius: 10px;
-    padding-block: 5px;
-    padding-inline: 20px;
+    padding-block: 8px;
+    padding-inline: 12px;
+    gap: 5px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #fff8bc;
-    border-color: #f0ffd4;
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+.cardButton .fa {
+    font-size: 12px;
 }
 
 .cardButton:hover {
-    background-color: #ffffe9;
+    background-color: var(--hover-color);
 }
 
 .numberContainer {
@@ -227,7 +230,7 @@
 .cardDescription,
 .cardPrice {
     text-align: center;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 
@@ -241,15 +244,15 @@
 
 .iconButton {
     border-radius: 50%;
-    background-color: #cad7fa;
-    border-color: #d6e1fe;
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
     width: 40px;
     height: 40px;
     cursor: pointer;
 }
 
 .iconButton:hover {
-    background-color: #ffffe9;
+    background-color: var(--hover-color);
 }
 
 @media (max-width: 2056px) {
