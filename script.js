@@ -133,7 +133,7 @@ function filterProductsBySearch(query, products) {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
-    addCartEventListeners(); // Agregar event listeners después de filtrar productos
+    addCartEventListeners();
 }
 
 async function filterProductsByCategory(selectedCategory, allProducts) {
@@ -145,7 +145,7 @@ async function filterProductsByCategory(selectedCategory, allProducts) {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
-    addCartEventListeners(); // Agregar event listeners después de filtrar productos
+    addCartEventListeners();
 }
 
 
