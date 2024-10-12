@@ -1,0 +1,18 @@
+@import '../assets/colors/color.css';
+
+.circleIcon {
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.circleIcon:hover {
+    background-color: var(--hover-color);
+}

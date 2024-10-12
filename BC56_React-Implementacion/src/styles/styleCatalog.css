@@ -1,0 +1,32 @@
+.catalogContainer {
+
+}
+.productContainer {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-block: 20px;
+    gap: 20px;
+}
+
+@media (max-width: 2056px) {
+    .productContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 690px) {
+    .productContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .productContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
