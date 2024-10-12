@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Product } from "../../models/Product"
 
 export const useFetchProducts = () => {
-    const [products, setProducts] = useState<string[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 

@@ -1,0 +1,33 @@
+.textTitle {
+  font-size: 35px;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.separatorTitle {
+  width: 100%;
+  border: 0;
+  height: 2px;
+  background-color: #000000;
+}
+
+@media (max-width: 840px) {
+  .textTitle {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .textTitle {
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
