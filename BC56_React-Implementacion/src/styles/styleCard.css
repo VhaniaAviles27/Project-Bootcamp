@@ -1,0 +1,70 @@
+.containerCard {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-width: 5px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.imageProduct {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.nameProduct,
+.stockProduct,
+.priceProduct {
+    text-align: center;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 5px;
+    color: rgb(0, 0, 0);
+}
+
+.nameProduct,
+.priceProduct {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.stockProduct {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+@media (max-width: 2056px) {
+    .containerCard {
+        display: flex;
+        width: 18%;
+    }  
+}
+
+@media (max-width: 690px) {
+    .containerCard {
+        display: flex;
+        width: 35%;
+    }  
+    .nameProduct,
+    .stockProduct,
+    .priceProduct {
+        font-size: 12px ;
+    }   
+}
+
+@media (max-width: 375px) {
+    .containerCard {
+        width: 80%;
+    }  
+    .nameProduct,
+    .stockProduct,
+    .priceProduct {
+        font-size: 10px;
+    }   
+}
+
+
