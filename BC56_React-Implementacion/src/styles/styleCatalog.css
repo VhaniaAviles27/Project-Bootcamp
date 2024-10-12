@@ -1,11 +1,8 @@
-.catalogContainer {
-
-}
 .productContainer {
-    flex-wrap: wrap;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-block: 20px;
     gap: 20px;
 }

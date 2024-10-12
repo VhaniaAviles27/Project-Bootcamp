@@ -1,0 +1,33 @@
+.footerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerIcon {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
+
+@media (max-width: 2056px) {
+    .footerContainer {
+        display: flex;
+        justify-content: space-between;
+    }   
+}
+
+@media (max-width: 690px) {
+    .footerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+@media (max-width: 375px) {
+    .footerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
