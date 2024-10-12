@@ -14,6 +14,7 @@ const CatalogPage = () => {
   return (
     <div className="catalogContainer">
       <HeaderLayout />
+      <div className="productContainer">
       {products.map((product: any) => (
         <Card
           key={product.id}
@@ -25,6 +26,8 @@ const CatalogPage = () => {
           height={300}
         />
       ))}
+      </div>
+      
     </div>
   );
 };
