@@ -22,11 +22,11 @@ export const useFetchProducts = () => {
             });
     }, []);
 
-    const filterBySearch = (string: string) => {
-        if (string === '') {
+    const filterBySearch = (searchTerm: string) => {
+        if (searchTerm === '') {
             setFilteredProducts(products); 
         } else {
-            const lowerCaseTerm = string.toLowerCase();
+            const lowerCaseTerm = searchTerm.toLowerCase();
             const filtered = products.filter(
                 (product) =>
                     product.title.toLowerCase().includes(lowerCaseTerm) ||
@@ -36,7 +36,14 @@ export const useFetchProducts = () => {
         }
     };
 
-    return { products: filteredProducts, loading, error, filterBySearch }; // Devuelve productos filtrados
+    const filterByCategory = (category: string) => {
+        if (category === '') {
+            setFilteredProducts(products); 
+        } else {
+            const filtered = products.filter(product => product.category === category);
+            setFilteredProducts(filtered);
+        }
+    };
+
+    return { products: filteredProducts, loading, error, filterBySearch, filterByCategory }; // Asegúrate de devolver filterByCategory
 };
-
-

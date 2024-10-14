@@ -7,14 +7,25 @@ import Title from "../components/Title";
 import { Product } from "../models/Product";
 import Search from "../components/Search";
 
+import { useFetchCategories } from "../features/functions/CboRenderFunction";
+import Cbo from "../components/Cbo";
+
 const CatalogPage = () => {
-  const { products, loading, error, filterBySearch } = useFetchProducts();
+  const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
+  const { categories, error: categoryError } = useFetchCategories();
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    filterByCategory(event.target.value);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
   }
   if (error) {
     return <div>Error: {error}</div>;
+  }
+  if (categoryError) {
+    return <div>Error: {categoryError}</div>;
   }
 
   return (
@@ -23,7 +34,11 @@ const CatalogPage = () => {
       <Title title={"PRODUCTOS"} />
       <div className="orderContainer">
         <Search onSearch={filterBySearch} />
-        
+        <Cbo 
+          subtitle={"Categorías: "}
+          onChange={handleCategoryChange} 
+          categories={[]}        
+          />
       </div>
 
       <div className="productContainer">

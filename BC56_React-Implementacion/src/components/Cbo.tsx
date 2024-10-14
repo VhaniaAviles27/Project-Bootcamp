@@ -1,26 +1,33 @@
 import "../styles/styleCbo.css";
 
-type CboProps = {
-  subtitle: string;
-  categories: string[]; // Asegúrate de definir el tipo para las categorías
+type Category = {
+    slug: string;
+    name: string;
+    url: string;
 };
 
-const Cbo: React.FC<CboProps> = ({ subtitle, categories }) => {
-  return (
-    <div className="containerCbo">
-      <label className="textCbo">{subtitle}</label>
-      <select className="principalCbo">
-        <option value="--Selecciona una opcion--" disabled>
-          -- Selecciona una opción --
-        </option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+type CboProps = {
+    subtitle: string;
+    categories: Category[];
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const Cbo: React.FC<CboProps> = ({ subtitle, categories, onChange }) => {
+    return (
+        <div className="containerCbo">
+            <label className="textCbo">{subtitle}</label>
+            <select className="principalCbo" onChange={onChange}>
+                <option value="--Selecciona una opcion--" disabled>
+                    -- Selecciona una opción --
+                </option>
+                {categories.map((category) => (
+                    <option key={category.slug} value={category.slug}>
+                        {category.name}
+                    </option>
+                ))}
+            </select>
+        </div>
+    );
 };
 
 export default Cbo;
