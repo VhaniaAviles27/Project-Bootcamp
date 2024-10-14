@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface IconProps {
+  id?: string;
   icon: IconProp;
   size?: 'xs' | 'lg' | 'sm' | '1x' | '2x' | '3x' | '5x' | '7x' | '10x';
   color?: string;
@@ -10,10 +11,10 @@ interface IconProps {
 }
 
 const Icon: React.FC<IconProps> = ({
-    icon, size = '1x', color = 'black', onClick
+    id, icon, size = '1x', color = 'black', onClick
 }) => {
   return (
-    <div className="circleIcon">
+    <div id = {id} className="circleIcon">
       <FontAwesomeIcon icon={icon} size={size} color={color} onClick={onClick} />
     </div>
   );
