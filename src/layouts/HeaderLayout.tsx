@@ -4,7 +4,7 @@ import Icon from "../components/Icon";
 import { faHome, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 type HeaderLayoutProps = {
-  cartCount: number; // Prop para recibir el contador
+  cartCount: number;
 };
 
 const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount }) => {
@@ -18,7 +18,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount }) => {
         <Icon icon={faUser} size="1x" />
         <div className="cartContainer">
           <Icon icon={faShoppingCart} size="1x" />
-          <span className="cartCount">{cartCount}</span> {/* Mostrar el contador */}
+          <span className="cartCount">{cartCount}</span>
         </div>
       </nav>
     </div>
