@@ -28,6 +28,7 @@
     padding-right: 10px;
     border-radius: 25px;
 }
+
 @media (max-width: 2056px) {
     .headerContainer {
         display: flex;
