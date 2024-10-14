@@ -5,9 +5,10 @@ import { faHome, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icon
 
 type HeaderLayoutProps = {
   cartCount: number;
+  cartPrice: number;
 };
 
-const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount }) => {
+const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount, cartPrice }) => {
   return (
     <div className="headerContainer">
       <div className="logoContainer">
@@ -19,6 +20,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount }) => {
         <div className="cartContainer">
           <Icon icon={faShoppingCart} size="1x" />
           <span className="cartCount">{cartCount}</span>
+          <text>| Pay: ${cartPrice}</text>
         </div>
       </nav>
     </div>

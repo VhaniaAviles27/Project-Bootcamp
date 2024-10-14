@@ -19,6 +19,15 @@
     flex-direction: row;
 }
 
+.cartContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(200, 255, 0, 0.664);
+    padding-right: 10px;
+    border-radius: 25px;
+}
 @media (max-width: 2056px) {
     .headerContainer {
         display: flex;
