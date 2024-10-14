@@ -1,5 +1,6 @@
 import React from 'react';
 import { Category } from "../models/Category"; 
+import "../styles/styleCbo.css"
 
 type CboProps = {
     categories: Category[]; 
@@ -13,8 +14,8 @@ const Cbo: React.FC<CboProps> = ({ categories, onCategorySelect, selectedCategor
     };
 
     return (
-        <select value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">-- Selecciona una opción --</option>
+        <select className = "principalCbo" value={selectedCategory} onChange={handleCategoryChange}>
+            <option  value="">-- Selecciona una categoría --</option>
             {categories.map((category) => (
                 <option key={category.slug} value={category.slug}>
                     {category.name}
