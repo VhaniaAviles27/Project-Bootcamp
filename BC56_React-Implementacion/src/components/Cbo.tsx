@@ -1,32 +1,26 @@
-import "../styles/styleCbo.css";
-
-type Category = {
-    slug: string;
-    name: string;
-    url: string;
-};
+import React from 'react';
+import { Category } from "../models/Category"; 
 
 type CboProps = {
-    subtitle: string;
-    categories: Category[];
-    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    categories: Category[]; 
+    onCategorySelect: (selectedCategory: string) => void; 
+    selectedCategory: string; 
 };
 
-const Cbo: React.FC<CboProps> = ({ subtitle, categories, onChange }) => {
+const Cbo: React.FC<CboProps> = ({ categories, onCategorySelect, selectedCategory }) => {
+    const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        onCategorySelect(event.target.value);
+    };
+
     return (
-        <div className="containerCbo">
-            <label className="textCbo">{subtitle}</label>
-            <select className="principalCbo" onChange={onChange}>
-                <option value="--Selecciona una opcion--" disabled>
-                    -- Selecciona una opción --
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">-- Selecciona una opción --</option>
+            {categories.map((category) => (
+                <option key={category.slug} value={category.slug}>
+                    {category.name}
                 </option>
-                {categories.map((category) => (
-                    <option key={category.slug} value={category.slug}>
-                        {category.name}
-                    </option>
-                ))}
-            </select>
-        </div>
+            ))}
+        </select>
     );
 };
 

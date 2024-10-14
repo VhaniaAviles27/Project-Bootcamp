@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/styleCatalog.css";
 import Card from "../components/Card";
 import { useFetchProducts } from "../features/functions/CardRenderFunction";
@@ -6,7 +7,6 @@ import FooterLayout from "../layouts/FooterLayout";
 import Title from "../components/Title";
 import { Product } from "../models/Product";
 import Search from "../components/Search";
-
 import { useFetchCategories } from "../features/functions/CboRenderFunction";
 import Cbo from "../components/Cbo";
 
@@ -14,8 +14,12 @@ const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    filterByCategory(event.target.value);
+  // Estado para manejar el contador del carrito
+  const [cartCount, setCartCount] = useState(0);
+
+  // Función para manejar la acción de agregar al carrito
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1); // Aumentar el contador en 1
   };
 
   if (loading) {
@@ -30,15 +34,15 @@ const CatalogPage = () => {
 
   return (
     <div className="catalogContainer">
-      <HeaderLayout />
+      <HeaderLayout cartCount={cartCount} />
       <Title title={"PRODUCTOS"} />
       <div className="orderContainer">
         <Search onSearch={filterBySearch} />
         <Cbo 
-          subtitle={"Categorías: "}
-          onChange={handleCategoryChange} 
-          categories={[]}        
-          />
+          selectedCategory="" 
+          onCategorySelect={filterByCategory}
+          categories={categories}
+        />
       </div>
 
       <div className="productContainer">
@@ -51,6 +55,7 @@ const CatalogPage = () => {
             price={product.price}
             width={200}
             height={300}
+            onAddToCart={handleAddToCart}  
           />
         ))}
       </div>

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Category } from "../../models/Category";
 
 export const useFetchCategories = () => {
-    const [categories, setCategories] = useState<string[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
