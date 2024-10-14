@@ -7,10 +7,15 @@ type CardProps = {
     price: number;
     width: number;
     height: number;
-    onAddToCart: () => void; // Nueva prop para manejar el evento de agregar al carrito
+    onAddToCart: () => void;
+    onTotalPrice: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height, onAddToCart }) => {
+const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height, onAddToCart, onTotalPrice }) => {
+    const handleTotalCart = () => {
+        onAddToCart();
+        onTotalPrice();
+    };
     return (
         <div className="containerCard" style={{ width, height }}>
             <img src={imageSrc} className="imageProduct" />
@@ -19,7 +24,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height
                 <h3 className="stockProduct">Stock: {stock}</h3>
                 <h2 className="priceProduct">Price: ${price}</h2>
             </div>
-            <button onClick={onAddToCart}>Agregar</button> {/* Botón que llama a la función */}
+            <button onClick={handleTotalCart}>Agregar</button>
         </div>
     );
 };
