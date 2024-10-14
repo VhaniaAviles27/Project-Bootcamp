@@ -7,22 +7,33 @@
     gap: 20px;
 }
 
+.orderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 20px;
+    gap: 10px;
+}
+
 @media (max-width: 2056px) {
-    .productContainer {
+    .productContainer,
+    .orderContainer {
         display: flex;
         justify-content: space-between;
     }
 }
 
 @media (max-width: 690px) {
-    .productContainer {
+    .productContainer,
+    .orderContainer {
         display: flex;
         flex-direction: column;
     }
 }
 
 @media (max-width: 375px) {
-    .productContainer {
+    .productContainer,
+    .orderContainer {
         display: flex;
         flex-direction: column;
     }
