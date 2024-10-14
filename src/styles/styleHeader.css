@@ -1,0 +1,50 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoContainer {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.logoImage {
+    width: 200px;
+}
+
+.containerIcon {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
+
+.cartContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(200, 255, 0, 0.664);
+    padding-right: 10px;
+    border-radius: 25px;
+}
+@media (max-width: 2056px) {
+    .headerContainer {
+        display: flex;
+        justify-content: space-between;
+    }   
+}
+
+@media (max-width: 690px) {
+    .headerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+@media (max-width: 375px) {
+    .headerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
