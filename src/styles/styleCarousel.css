@@ -1,0 +1,65 @@
+@import '../assets/colors/color.css';
+
+.containerImages {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.slideImages {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.imageBanner {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+}
+
+.buttonArrowLeft,
+.buttonArrowRigth {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.452);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+}
+
+.buttonArrowLeft {
+    left: 20px;
+}
+
+.buttonArrowRigth {
+    right: 20px;
+}
+
+.buttonArrowLeft:hover,
+.buttonArrowRigth:hover {
+    background-color: rgba(255, 255, 255, 0.295);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .imageBanner {
+        max-height: 300px;
+    }
+
+    .buttonArrowLeft,
+    .buttonArrowRigth {
+        padding: 8px;
+    }
+}

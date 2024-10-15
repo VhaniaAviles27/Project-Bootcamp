@@ -9,6 +9,7 @@ import Title from "../components/Title";
 import { Product } from "../models/Product";
 import Search from "../components/Search";
 import Cbo from "../components/Cbo";
+import Carousel from "../components/Carousel";
 
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
@@ -37,6 +38,7 @@ const CatalogPage = () => {
   return (
     <div className="catalogContainer">
       <HeaderLayout cartCount={cartCount} cartPrice={cartPrice} />
+      <Carousel/>
       <Title title={"PRODUCTOS"} />
       <div className="orderContainer">
         <Search onSearch={filterBySearch} />
