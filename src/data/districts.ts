@@ -1,4 +1,4 @@
-export const validDistricts = [
+export const validDistricts: string[] = [
     'Breña',
     'La Victoria',
     'Lima',

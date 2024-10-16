@@ -6,33 +6,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faLocation, faLocationDot, faMapLocationDot, faPhone, faTrash, faUserPen, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import FooterLayout from "../layouts/FooterLayout";
 import Input from "../components/Input";
-import { validDistricts } from "../data/districts";
-import { useValidateDistrict } from "../hooks/district";
+import { useValidation } from "../hooks/validation";
+import { validDistricts } from '../data/districts';
+
 
 const ResumePage = () => {
 
     const { cart, clearProductCart, incrementQuantity, decrementQuantity, cartPrice } = useCart();
-    const { validateDistrict } = useValidateDistrict();
-
-    const validateInputPersonalData = (value: string) => {
-        return value.length >= 3;
-    };
-
-    const validateInputAddress = (value: string) => {
-        return value.length >= 15;
-    }
-
+ 
+    const {
+        name, handleNameChange,
+        lastName, handleLastNameChange,
+        district, handleDistrictChange,
+        address, handleAddressChange,
+        reference, handleReferenceChange,
+        phone, handlePhoneChange,
+        error,
+        handlePay
+    } = useValidation();
+    
     return (
         <div className="resumeContainer">
             <Title title={"RESUME"} />
             <div className="resumeContent">
                 <div className="resumeHeader">
-                    <text>Producto</text>
-                    <text>Nombre</text>
-                    <text>Precio</text>
-                    <text>Cantidad</text>
-                    <text>Total</text>
-                    <text>Eliminar</text>
+                    <h3>Producto</h3>
+                    <h3>Nombre</h3>
+                    <h3>Precio</h3>
+                    <h3>Cantidad</h3>
+                    <h3>Total</h3>
+                    <h3>Eliminar</h3>
                 </div>
 
                 {cart.length > 0 ? (
@@ -41,14 +44,14 @@ const ResumePage = () => {
                         return (
                             <div key={product.id} className="resumeProducts">
                                 <img src={product.thumbnail} className="productImage" />
-                                <text>{product.title}</text>
-                                <text>$ {product.price}</text>
+                                <h3>{product.title}</h3>
+                                <h3>$ {product.price}</h3>
                                 <div className="quantityProduct">
                                     <FontAwesomeIcon className="quantityButton" onClick={() => decrementQuantity(product.id)} icon={faCircleMinus} />
-                                    <text>{product.quantity}</text>
+                                    <h3>{product.quantity}</h3>
                                     <FontAwesomeIcon className="quantityButton" onClick={() => incrementQuantity(product.id)} icon={faCirclePlus} />
                                 </div>
-                                <text>${totalPriceForProduct.toFixed(2)}</text>
+                                <h3>${totalPriceForProduct.toFixed(2)}</h3>
                                 <FontAwesomeIcon className="deleteButton" onClick={() => clearProductCart(product.id)} icon={faTrash} />
                             </div>
 
@@ -60,9 +63,9 @@ const ResumePage = () => {
                 )}
 
                 <div className="totalPricePay">
-                    <text className="textPay">
+                    <h3 className="textPay">
                         Total a Pagar = ${cartPrice.toFixed(2)}
-                    </text>
+                    </h3>
                 </div>
 
             </div>
@@ -72,52 +75,60 @@ const ResumePage = () => {
                     typeData="Nombre"
                     icon={faUserPen}
                     placeholder="Ingresa tu nombre"
-                    validate={validateInputPersonalData}
-                    errorMessage="Entrada no válido"
+                    value={name}
+                    onChange={handleNameChange}
+                    errorMessage="Entrada no válida"
+                    showError={error.name}             
                 />
                 <Input
                     typeData="Apellidos"
                     icon={faUserTag}
                     placeholder="Ingresa tu apellido"
-                    validate={validateInputPersonalData}
+                    value={lastName}
+                    onChange= {handleLastNameChange}
                     errorMessage="Entrada no válida"
+                    showError = {error.lastName}
                 />
                 <Input
                     typeData="Distrito"
                     icon={faLocation}
-                    placeholder="Ingresa tu distrito"
-                    validate={validateDistrict}
-                    options={validDistricts}
+                    placeholder="Seleccione su distrito"
+                    value={district}
+                    onChange={handleDistrictChange}
+                    options={ validDistricts }
                     errorMessage="Seleccione un distrito"
+                    showError = {error.district}
                 />
                 <Input
                     typeData="Dirección"
                     icon={faLocationDot}
                     placeholder="Ingresa tu dirección"
-                    validate={validateInputAddress}
+                    value={address}
+                    onChange={handleAddressChange}                    
                     errorMessage="Ingrese una dirección válida"
+                    showError = {error.address}
                 />
                 <Input
                     typeData="Referencia"
                     icon={faMapLocationDot}
                     placeholder="Ingresa una referencia"
-                    validate={validateInputPersonalData}
+                    value={reference}
+                    onChange={handleReferenceChange}
                     errorMessage="Ingrese una referencia válida"
+                    showError = {error.reference}
                 />
                 <Input
                     typeData="Celular"
                     icon={faPhone}
                     placeholder="Ingresa un número de celular"
-                    validate={validateInputPersonalData}
+                    value={phone}
+                    onChange={handlePhoneChange}
                     errorMessage="Ingrese un número de celular válido"
+                    showError = {error.phone}
                 />
-                <button className="buttonPay">Pagar</button>
+                <button className="buttonPay" onClick={handlePay}>Pagar</button>
             </div>
-           
-            
-             
             <FooterLayout />
-
         </div>
 
     );
