@@ -9,23 +9,22 @@ type HeaderLayoutProps = {
 };
 
 const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount, cartPrice }) => {
+  
   return (
       <div className="headerContainer">
         <div className="logoContainer">
           <img src={logoImage} className="logoImage" />
         </div>
         <nav className="containerIcon">
-          <Icon icon={faHome} size="1x" />
+          <Icon icon={faHome} size="1x" to="/" />
           <Icon icon={faUser} size="1x" />
           <div className="cartContainer">
-            <Icon icon={faShoppingCart} size="1x" />
+            <Icon icon={faShoppingCart} size="1x" to="/resume" />
             <span className="cartCount">{cartCount}</span>
             <text>| Pay: ${cartPrice.toFixed(2)}</text>
           </div>
         </nav>
       </div>
-    
-
   );
 };
 

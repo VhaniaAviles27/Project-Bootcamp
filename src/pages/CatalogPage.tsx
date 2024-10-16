@@ -14,10 +14,9 @@ import { useCart } from "../hooks/useCart";
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
-  const { addProductCart,cartCount, cartPrice } = useCart();
-
+  const { addProductCart, cartCount, cartPrice } = useCart();
   const handleProductAddToCart = (product: Product) => {
-    addProductCart(product)
+    addProductCart(product);
   }
 
   if (loading) {

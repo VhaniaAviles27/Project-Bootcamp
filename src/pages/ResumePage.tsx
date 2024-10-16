@@ -8,11 +8,12 @@ import FooterLayout from "../layouts/FooterLayout";
 import Input from "../components/Input";
 import { useValidation } from "../hooks/validation";
 import { validDistricts } from '../data/districts';
+import HeaderLayout from "../layouts/HeaderLayout";
 
 
 const ResumePage = () => {
 
-    const { cart, clearProductCart, incrementQuantity, decrementQuantity, cartPrice } = useCart();
+    const { cart, clearProductCart, incrementQuantity, decrementQuantity, cartPrice, cartCount } = useCart();
  
     const {
         name, handleNameChange,
@@ -27,6 +28,7 @@ const ResumePage = () => {
     
     return (
         <div className="resumeContainer">
+            <HeaderLayout cartCount={cartCount} cartPrice={cartPrice}/>
             <Title title={"RESUME"} />
             <div className="resumeContent">
                 <div className="resumeHeader">
@@ -130,7 +132,6 @@ const ResumePage = () => {
             </div>
             <FooterLayout />
         </div>
-
     );
 }
 

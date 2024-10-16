@@ -1,10 +1,12 @@
 import { useCart } from "./useCart"
 import { useValidateDistrict } from './district';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const useValidation = () => {
     const { cart, clearCart } = useCart();
     const { validateDistrict } = useValidateDistrict();
+    const navigate = useNavigate();
 
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -98,6 +100,7 @@ export const useValidation = () => {
             setReference("");
             setPhone("");
             clearCart();
+            navigate("/");
         }
     }
 
