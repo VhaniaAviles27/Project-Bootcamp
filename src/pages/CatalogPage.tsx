@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../styles/styleCatalog.css";
 import Card from "../components/Card";
 import { useFetchProducts } from "../features/functions/CardRenderFunction";
@@ -10,19 +9,15 @@ import { Product } from "../models/Product";
 import Search from "../components/Search";
 import Cbo from "../components/Cbo";
 import Carousel from "../components/Carousel";
+import { useCart } from "../hooks/useCart";
 
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
-  const [cartCount, setCartCount] = useState(0);
-  const [cartPrice, setCartPrice] = useState(0);
+  const { addProductCart,cartCount, cartPrice } = useCart();
 
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1); 
-  };
-
-  const handleTotalPrice = (price: number) => {
-    setCartPrice(cartPrice + price)
+  const handleProductAddToCart = (product: Product) => {
+    addProductCart(product)
   }
 
   if (loading) {
@@ -59,8 +54,7 @@ const CatalogPage = () => {
             price={product.price}
             width={200}
             height={300}
-            onAddToCart={handleAddToCart}  
-            onTotalPrice={() => handleTotalPrice(product.price)}
+            onAddProductToCart={() => handleProductAddToCart(product)}         
           />
         ))}
       </div>

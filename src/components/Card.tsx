@@ -7,14 +7,12 @@ type CardProps = {
     price: number;
     width: number;
     height: number;
-    onAddToCart: () => void;
-    onTotalPrice: () => void;
+    onAddProductToCart: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height, onAddToCart, onTotalPrice }) => {
+const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height, onAddProductToCart }) => {
     const handleTotalCart = () => {
-        onAddToCart();
-        onTotalPrice();
+        onAddProductToCart();
     };
     return (
         <div className="containerCard" style={{ width, height }}>
@@ -24,7 +22,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, name, stock, price, width, height
                 <h3 className="stockProduct">Stock: {stock}</h3>
                 <h2 className="priceProduct">Price: ${price}</h2>
             </div>
-            <button onClick={handleTotalCart}>Agregar</button>
+            <button className="addButton" onClick={handleTotalCart}>Agregar</button>
         </div>
     );
 };

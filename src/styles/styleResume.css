@@ -1,0 +1,31 @@
+.resumeHeader {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+}
+
+.resumeProducts {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.productImage {
+    max-width: 150px;
+}
+
+.quantityProduct {
+    display: flex;
+    gap: 10px
+}
+.deleteButton {
+    cursor: pointer;
+}
+
+@media (max-width: 690px) {
+    .productImage {
+        max-width: 60px;
+    }
+
+}
