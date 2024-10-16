@@ -1,26 +1,70 @@
 .resumeHeader {
     display:grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(6,1fr);
     justify-items: center;
+    border-bottom: 1.5px solid black;
+    padding: 10px;
+    background-color: var(--background-color);
 }
 
+.resumeContent {
+    margin-top: 20px;
+}
 .resumeProducts {
     display:grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(6,1fr);
     justify-items: center;
     align-items: center;
+    border-bottom: 1.5px solid black;
+    padding: 10px;
 }
 
 .productImage {
-    max-width: 150px;
+    max-width: 120px;
 }
 
 .quantityProduct {
     display: flex;
     gap: 10px
 }
+
+.quantityButton {
+    color: rgba(15, 15, 134, 0.788);
+    cursor: pointer;
+}
 .deleteButton {
     cursor: pointer;
+    color: rgb(233, 23, 23)
+}
+
+.totalPricePay {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 180px;
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: var(--hover-color);
+    display: flex;
+    padding-block: 10px;
+    padding-inline: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--background-color);
+    justify-content: center;
+}
+
+.informationContent {
+    margin-block: 20px;
+}
+
+.buttonPay {
+    cursor: pointer;
+    background-color: var(--hover-color);
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+    padding-block: 10px;
+    width: 100%;
+    font-weight: bolder;
+    font-size: 15px;
 }
 
 @media (max-width: 690px) {

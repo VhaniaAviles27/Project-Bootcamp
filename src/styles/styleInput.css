@@ -1,0 +1,39 @@
+.inputContainer {
+    margin: 1rem 0;
+}
+.textData{
+    font-weight: bold;
+}
+
+.inputContent {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding-block: 5px;
+    padding-inline: 15px;
+    border-radius: 5px;
+}
+
+.inputIcon {
+    margin-right: 0.5rem;
+}
+
+.customInput {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.inputContent.invalid {
+    border-color: red;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 15px;
+}
+
