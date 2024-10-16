@@ -2,6 +2,7 @@ import { useCart } from "./useCart"
 import { useValidateDistrict } from './district';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const useValidation = () => {
     const { cart, clearCart } = useCart();
@@ -91,8 +92,31 @@ export const useValidation = () => {
                 },
                 cart,
             }
-            alert(`Pedido registrado exitosamente: ${JSON.stringify(orderData, null, 2)}`);
+
+            const cartItems = orderData.cart.map(item => {
+                const totalPrice = (item.price * (item.quantity || 0)).toFixed(2);
+                return `<div>${item.title} (x${item.quantity}) = $${totalPrice}</div>`; // Usamos <div> para que cada producto esté en su propia línea
+            }).join("");
+    
+            const message = `
+                <strong>Datos de envío:</strong><br>
+                Cliente: ${orderData.customer.name} ${orderData.customer.lastName}<br>
+                Distrito: ${orderData.customer.district}<br>
+                Dirección: ${orderData.customer.address}<br>
+                Referencia: ${orderData.customer.reference}<br>
+                Celular: ${orderData.customer.phone}<br><br>
+                <strong>Productos:</strong><br>${cartItems}
+            `;
+
+            Swal.fire({
+                title: 'Pedido registrado con éxito!',
+                html: message,
+                icon: 'success',
+                confirmButtonText: "Cerrar"
+            })
+            
             console.log("Datos del carrito:", orderData);
+
             setName("");
             setLastName("");
             setDistrict("");
