@@ -44,3 +44,4 @@ export interface Product {
     thumbnail : string; 
     quantity: number;  
 }
+

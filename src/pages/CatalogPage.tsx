@@ -18,7 +18,6 @@ const CatalogPage = () => {
   const handleProductAddToCart = (product: Product) => {
     addProductCart(product);
   }
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -32,34 +31,37 @@ const CatalogPage = () => {
   return (
     <div className="catalogContainer">
       <HeaderLayout cartCount={cartCount} cartPrice={cartPrice} />
-      <Carousel/>
+      <Carousel />
       <Title title={"PRODUCTOS"} />
-      <div className="orderContainer">
-        <Search onSearch={filterBySearch} />
-        <Cbo 
-          selectedCategory="" 
-          onCategorySelect={filterByCategory}
-          categories={categories}
-        />
-      </div>
-
-      <div className="productContainer">
-        {products.map((product: Product) => (
-          <Card
-            key={product.id}
-            imageSrc={product.thumbnail}
-            name={product.title}
-            stock={product.stock}
-            price={product.price}
-            width={200}
-            height={300}
-            onAddProductToCart={() => handleProductAddToCart(product)}         
+      <div className="catalogContent">
+        <div className="orderContainer">
+          <Search onSearch={filterBySearch} />
+          <Cbo
+            selectedCategory=""
+            onCategorySelect={filterByCategory}
+            categories={categories}
           />
-        ))}
+        </div>
+
+        <div className="productContainer">
+          {products.map((product: Product) => (
+            <Card
+              key={product.id}
+              imageSrc={product.thumbnail}
+              name={product.title}
+              stock={product.stock}
+              price={product.price}
+              width={200}
+              height={300}
+              onAddProductToCart={() => handleProductAddToCart(product)}
+            />
+          ))}
+        </div>
       </div>
       <FooterLayout />
     </div>
   );
 };
+
 
 export default CatalogPage;

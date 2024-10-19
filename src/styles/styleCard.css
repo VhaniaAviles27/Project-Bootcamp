@@ -4,17 +4,26 @@
     justify-content: center;
     border-width: 5px;
     align-items: center;
-    padding: 20px;
+    padding-inline: 10px;
+    padding-block: 40px;
     gap: 5px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .imageProduct {
-    width: 100%;
+    z-index: -1;
+    width: 200px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    object-fit: contain;
+    background-color: white;
+}
+
+.containerCard:hover {
+    cursor: pointer;
+    background-color: rgba(208, 209, 199, 0.05)
 }
 
 .nameProduct,
@@ -37,8 +46,34 @@
     font-weight: normal;
 }
 
+.detailsProduct {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-block: 10px;
+    align-items: center;
+}
+
 .addButton {
-    margin-bottom:15px;
+    margin-bottom:10px;  
+    padding-block: 10px; 
+    border-radius: 20px;
+    width: 150px;
+    border-color: orange;
+    cursor: pointer;
+    background-color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.addButton:hover {
+    background-color: rgba(208, 209, 199, 0.363)
+}
+
+.iconCart {
+    margin-right: 10px;
+    color: orange;
+    
 }
 
 @media (max-width: 2056px) {

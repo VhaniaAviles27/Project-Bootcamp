@@ -1,5 +1,5 @@
 import "../styles/styleHeader.css";
-import logoImage from "../assets/images/image-logo.png";
+import logoImage from "../assets/images/image-logo-1.jpg";
 import Icon from "../components/Icon";
 import { faHome, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 

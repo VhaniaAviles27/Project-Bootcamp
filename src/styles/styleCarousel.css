@@ -3,7 +3,6 @@
 .containerImages {
     display: flex;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     margin-top: 20px;
@@ -17,8 +16,8 @@
 }
 
 .imageBanner {
-    max-width: 100%;
-    max-height: 500px;
+    width: 100%;
+    
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -55,7 +54,7 @@
 
 @media (max-width: 768px) {
     .imageBanner {
-        max-height: 300px;
+        width: 100%;
     }
 
     .buttonArrowLeft,
