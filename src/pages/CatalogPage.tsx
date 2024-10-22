@@ -1,7 +1,7 @@
 import "../styles/styleCatalog.css";
 import Card from "../components/Card";
-import { useFetchProducts } from "../features/functions/CardRenderFunction";
-import { useFetchCategories } from "../features/functions/CboRenderFunction";
+import { useFetchProducts } from "../hooks/useFetchProducts";
+import { useFetchCategories } from "../hooks/useFetchCategories";
 import HeaderLayout from "../layouts/HeaderLayout";
 import FooterLayout from "../layouts/FooterLayout";
 import Title from "../components/Title";
@@ -14,9 +14,9 @@ import { useCart } from "../hooks/useCart";
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
-  const { addProductCart, cartCount, cartPrice } = useCart();
+  const { addProduct, cartCount, cartPrice } = useCart();
   const handleProductAddToCart = (product: Product) => {
-    addProductCart(product);
+    addProduct(product);
   }
   if (loading) {
     return <div>Loading...</div>;

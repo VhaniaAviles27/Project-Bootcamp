@@ -40,6 +40,7 @@ export const validDistricts: string[] = [
     'San Bartolo',
     'San Juan de Miraflores',
     'Santa María del Mar',
+    'Ventanilla',
     'Villa el Salvador',
     'Villa María del Triunfo'
 ]

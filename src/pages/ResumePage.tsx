@@ -13,7 +13,7 @@ import HeaderLayout from "../layouts/HeaderLayout";
 
 const ResumePage = () => {
 
-    const { cart, clearProductCart, incrementQuantity, decrementQuantity, cartPrice, cartCount } = useCart();
+    const { cart, clearProduct, incrementQuantity, decrementQuantity, cartPrice, cartCount } = useCart();
  
     const {
         name, handleNameChange,
@@ -54,7 +54,7 @@ const ResumePage = () => {
                                     <FontAwesomeIcon className="quantityButton" onClick={() => incrementQuantity(product.id)} icon={faCirclePlus} />
                                 </div>
                                 <h3>${totalPriceForProduct.toFixed(2)}</h3>
-                                <FontAwesomeIcon className="deleteButton" onClick={() => clearProductCart(product.id)} icon={faTrash} />
+                                <FontAwesomeIcon className="deleteButton" onClick={() => clearProduct(product.id)} icon={faTrash} />
                             </div>
 
                         )
