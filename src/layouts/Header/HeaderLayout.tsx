@@ -1,7 +1,8 @@
-import "../styles/styleHeader.css";
-import logoImage from "../assets/images/image-logo-1.jpg";
-import Icon from "../components/Icon";
+import "./styleHeader.css";
+import logoImage from "../assets/images/imageLogo.jpg";
+
 import { faHome, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Icon from "../../components/Icon/Icon";
 
 type HeaderLayoutProps = {
   cartCount: number;

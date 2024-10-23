@@ -1,14 +1,14 @@
-import Title from "../components/Title";
+import Title from "../components/Title/Title";
 import "../styles/styleResume.css";
 import { Product } from "../models/Product";
 import { useCart } from "../hooks/useCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faLocation, faLocationDot, faMapLocationDot, faPhone, faTrash, faUserPen, faUserTag } from "@fortawesome/free-solid-svg-icons";
-import FooterLayout from "../layouts/FooterLayout";
-import Input from "../components/Input";
-import { useValidation } from "../hooks/validation";
+import FooterLayout from "../layouts/Footer/FooterLayout";
+import Input from "../components/Input/Input";
+import { useValidation } from "../hooks/useValidation";
 import { validDistricts } from '../data/districts';
-import HeaderLayout from "../layouts/HeaderLayout";
+import HeaderLayout from "../layouts/Header/HeaderLayout";
 
 
 const ResumePage = () => {

@@ -1,5 +1,6 @@
-import "../styles/styleFooter.css";
-import Icon from "../components/Icon";
+import Icon from "../../components/Icon/Icon";
+import "./styleFooter.css";
+
 import {
   faFacebook,
   faInstagram,

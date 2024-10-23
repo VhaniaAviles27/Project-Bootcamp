@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "../styles/styleSearch.css"
+import "./styleSearch.css";
 interface SearchProps {
   onSearch: (query: string) => void;
 }

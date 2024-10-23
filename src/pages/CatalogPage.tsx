@@ -1,14 +1,14 @@
 import "../styles/styleCatalog.css";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import { useFetchProducts } from "../hooks/useFetchProducts";
 import { useFetchCategories } from "../hooks/useFetchCategories";
-import HeaderLayout from "../layouts/HeaderLayout";
-import FooterLayout from "../layouts/FooterLayout";
-import Title from "../components/Title";
+import HeaderLayout from "../layouts/Header/HeaderLayout";
+import FooterLayout from "../layouts/Footer/FooterLayout";
+import Title from "../components/Title/Title";
 import { Product } from "../models/Product";
-import Search from "../components/Search";
-import Cbo from "../components/Cbo";
-import Carousel from "../components/Carousel";
+import Search from "../components/Search/Search";
+import Cbo from "../components/ComboBox/ComboBox";
+import Carousel from "../components/Carousel/Carousel";
 import { useCart } from "../hooks/useCart";
 
 const CatalogPage = () => {
