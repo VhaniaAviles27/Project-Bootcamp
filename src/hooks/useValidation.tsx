@@ -1,5 +1,4 @@
 import { useCart } from "./useCart";
-import { useValidateDistrict } from './useDistrict';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -7,9 +6,7 @@ import { validateInputPersonalData, validateInputAddress, validateInputPhone } f
 
 export const useValidation = () => {
   const { cart, clearCart } = useCart();
-  const { validateDistrict } = useValidateDistrict();
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [district, setDistrict] = useState("");
@@ -37,7 +34,7 @@ export const useValidation = () => {
 
   const handleDistrictChange = (value: string) => {
     setDistrict(value);
-    setError(prev => ({ ...prev, district: !validateDistrict(value) }));
+    setError(prev => ({ ...prev, district: value === "" }));
   };
 
   const handleAddressChange = (value: string) => {
@@ -59,7 +56,7 @@ export const useValidation = () => {
     const newError = {
       name: !validateInputPersonalData(name),
       lastName: !validateInputPersonalData(lastName),
-      district: !validateDistrict(district),
+      district: district === "",
       address: !validateInputAddress(address),
       reference: !validateInputAddress(reference),
       phone: !validateInputPhone(phone),

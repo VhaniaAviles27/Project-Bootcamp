@@ -10,7 +10,6 @@ interface InputProps {
   placeholder: string;
   errorMessage: string;
   showError: boolean;
-  options?: string[];
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,7 +20,6 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   errorMessage,
   showError,
-  options,
 }) => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -35,20 +33,6 @@ const Input: React.FC<InputProps> = ({
       <label className="textData">{typeData}</label>
       <div className={`inputContent ${showError ? "invalid" : ""}`}>
         <FontAwesomeIcon icon={icon} />
-        {options ? (
-          <select
-            value={value}
-            onChange={handleChange}
-            className={`customInput ${showError ? "invalid" : ""}`}
-          >
-            <option value="">{placeholder}</option>
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        ) : (
           <input
             type="text"
             value={value}
@@ -56,7 +40,6 @@ const Input: React.FC<InputProps> = ({
             placeholder={placeholder}
             className={`customInput ${showError ? "invalid" : ""}`}
           />
-        )}
       </div>
       {showError && <span className="errorMessage">{errorMessage}</span>}
     </div>

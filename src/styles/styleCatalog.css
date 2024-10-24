@@ -14,9 +14,7 @@
 }
 
 .orderContainer {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-block: 20px;
     gap: 10px;
 }

@@ -1,7 +1,7 @@
 import "./styleCarousel.css";
-import Banner01 from "../assets/images/iamgeBanner01.jpeg";
-import Banner02 from "../assets/images/imageBanner02.jpg";
-import Banner03 from "../assets/images/imageBanner03.jpg";
+import Banner01 from "../../assets/images/imageBanner01.jpeg";
+import Banner02 from "../../assets/images/imageBanner02.jpg";
+import Banner03 from "../../assets/images/imageBanner03.jpg";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/styleCatalog.css";
 import Card from "../components/Card/Card";
 import { useFetchProducts } from "../hooks/useFetchProducts";
@@ -7,17 +8,26 @@ import FooterLayout from "../layouts/Footer/FooterLayout";
 import Title from "../components/Title/Title";
 import { Product } from "../models/Product";
 import Search from "../components/Search/Search";
-import Cbo from "../components/ComboBox/ComboBox";
 import Carousel from "../components/Carousel/Carousel";
 import { useCart } from "../hooks/useCart";
+import ComboBox from "../components/ComboBox/ComboBox";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
   const { addProduct, cartCount, cartPrice } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const handleProductAddToCart = (product: Product) => {
     addProduct(product);
-  }
+  };
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+    filterByCategory(category)
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -36,10 +46,14 @@ const CatalogPage = () => {
       <div className="catalogContent">
         <div className="orderContainer">
           <Search onSearch={filterBySearch} />
-          <Cbo
-            selectedCategory=""
-            onCategorySelect={filterByCategory}
-            categories={categories}
+          <ComboBox
+            options={categories.map((category) => ({
+              value: category.slug,
+              label: category.name,
+            }))}
+            icon = {faDatabase}
+            onSelect={handleCategorySelect} 
+            selectedValue={selectedCategory} 
           />
         </div>
 
@@ -62,6 +76,5 @@ const CatalogPage = () => {
     </div>
   );
 };
-
 
 export default CatalogPage;

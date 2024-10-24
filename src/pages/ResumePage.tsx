@@ -9,6 +9,7 @@ import Input from "../components/Input/Input";
 import { useValidation } from "../hooks/useValidation";
 import { validDistricts } from '../data/districts';
 import HeaderLayout from "../layouts/Header/HeaderLayout";
+import ComboBox from "../components/ComboBox/ComboBox";
 
 
 const ResumePage = () => {
@@ -91,15 +92,17 @@ const ResumePage = () => {
                     errorMessage="Entrada no válida"
                     showError = {error.lastName}
                 />
-                <Input
+                <ComboBox 
                     typeData="Distrito"
-                    icon={faLocation}
-                    placeholder="Seleccione su distrito"
-                    value={district}
-                    onChange={handleDistrictChange}
-                    options={ validDistricts }
-                    errorMessage="Seleccione un distrito"
-                    showError = {error.district}
+                    options={validDistricts.map((district) => ({
+                        value: district,
+                        label: district,
+                      }))}
+                    onSelect={handleDistrictChange}
+                    icon = {faLocation}
+                    selectedValue={district}
+                    errorMessage="Debe seleccionar un distrito"   
+                    showError={error.district}                 
                 />
                 <Input
                     typeData="Dirección"

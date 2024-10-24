@@ -1,37 +1,59 @@
 import React from "react";
-import { Category } from "../../models/Category";
 import "./styleComboBox.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+type Option = {
+  value: string;
+  label: string;
+};
 
 type ComboBoxProps = {
-  categories: Category[];
-  onCategorySelect: (selectedCategory: string) => void;
-  selectedCategory: string;
+  options: Option[];
+  onSelect: (selectedValue: string) => void; 
+  selectedValue: string;
+  typeData? : string;
+  errorMessage? : string;
+  showError? : boolean;
+  icon?: IconProp;
 };
 
 const ComboBox: React.FC<ComboBoxProps> = ({
-  categories,
-  onCategorySelect,
-  selectedCategory,
+  options,
+  onSelect,
+  icon,
+  typeData,
+  selectedValue,
+  errorMessage,
+  showError,
 }) => {
-  const handleCategoryChange = (
+  const handleOptionChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    onCategorySelect(event.target.value);
+    onSelect(event.target.value);
   };
 
   return (
-    <select
-      className="principalCbo"
-      value={selectedCategory}
-      onChange={handleCategoryChange}
-    >
-      <option value="">-- Selecciona una categoría --</option>
-      {categories.map((category) => (
-        <option key={category.slug} value={category.slug}>
-          {category.name}
-        </option>
-      ))}
-    </select>
+    <div className={`comboBoxWrapper ${showError ? "invalid" : ""}`}>
+      <label className="textData">{typeData}</label>
+      <div className="comboBoxContainer">
+        {icon && <FontAwesomeIcon icon={icon} className="comboBoxIcon"/>}
+        <select
+          className="principalCbo"
+          value={selectedValue}
+          onChange={handleOptionChange}
+        >
+          <option value="">-- Selecciona una opción --</option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      {showError && <span className="errorMessage">{errorMessage}</span>}
+    </div>
+    
   );
 };
 

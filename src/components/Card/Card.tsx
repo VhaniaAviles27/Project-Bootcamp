@@ -21,14 +21,12 @@ const Card: React.FC<CardProps> = ({
   height,
   onAddProductToCart,
 }) => {
-  const handleTotalCart = () => {
-    onAddProductToCart();
-  };
+  
   return (
     <div className="containerCard" style={{ width, height }}>
       <img src={imageSrc} className="imageProduct" />
       <div className="detailsProduct">
-        <button className="addButton" onClick={handleTotalCart}>
+        <button className="addButton" onClick={onAddProductToCart}>
           <FontAwesomeIcon className="iconCart" icon={faShoppingCart} />
           Add to cart
         </button>
