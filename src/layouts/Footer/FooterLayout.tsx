@@ -16,9 +16,9 @@ const FooterLayout: React.FC = () => {
         </p>
       </div>
       <nav className="containerIcon">
-        <Icon icon={faFacebook} size="1x" />
-        <Icon icon={faInstagram} size="1x" />
-        <Icon icon={faTiktok} size="1x" />
+        <Icon icon={faFacebook} />
+        <Icon icon={faInstagram} />
+        <Icon icon={faTiktok}/>
       </nav>
     </div>
   );

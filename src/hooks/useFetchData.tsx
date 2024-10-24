@@ -21,13 +21,9 @@ export const useFetchData = <T,>(url: string): FetchDataResult<T> => {
         }
         const result = await response.json();
         setData(result.products || result);
-        setLoading(false);
       } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message || "Error fetching data");
-        } else {
-          setError("An unknown error occurred");
-        }
+        setError((error as Error).message || "Error fetching data");
+      } finally {
         setLoading(false);
       }
     };
