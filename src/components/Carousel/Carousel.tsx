@@ -25,11 +25,11 @@ const Carousel: React.FC = () => {
 
   return (
     <div className="containerImages">
-      <button className="buttonArrowLeft" onClick={goToPrevious}>
+      <button className="buttonArrowLeft" onClick={goToPrevious} data-testid="buttonArrowLeft">
         <FontAwesomeIcon icon={faCircleArrowLeft} />
       </button>
       <div className="slideImages">
-        <img src={imagesBanner[slideImages]} className="imageBanner" />
+        <img src={imagesBanner[slideImages]} className="imageBanner" data-testid="buttonArrowRight" />
       </div>
       <button className="buttonArrowRigth" onClick={goToNext}>
         <FontAwesomeIcon icon={faCircleArrowRight} />

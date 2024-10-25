@@ -9,20 +9,22 @@ import Title from "../components/Title/Title";
 import { Product } from "../models/Product";
 import Search from "../components/Search/Search";
 import Carousel from "../components/Carousel/Carousel";
-import { useCart } from "../hooks/useCart";
 import ComboBox from "../components/ComboBox/ComboBox";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { useCartContext } from "../hooks/cartContext";
 
 const CatalogPage = () => {
   const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
   const { categories, error: categoryError } = useFetchCategories();
-  const { addProduct, cartCount, cartPrice } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handleProductAddToCart = (product: Product) => {
-    addProduct(product);
+  const { state, dispatch } = useCartContext();
+  const cartCount = state.cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
+  const cartPrice = state.cart.reduce((acc, item) => acc + (item.price * (item.quantity || 0)), 0);
+  const handleAddProduct = (product: Product) => {
+    dispatch({ type: "ADD_PRODUCT", product });
   };
-
+  
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     filterByCategory(category)
@@ -67,7 +69,7 @@ const CatalogPage = () => {
               price={product.price}
               width={200}
               height={300}
-              onAddProductToCart={() => handleProductAddToCart(product)}
+              onAddProductToCart={() => handleAddProduct(product)}
             />
           ))}
         </div>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/20</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -98,75 +98,75 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useEffect } from "react";
 import { Product } from "../models/Product";
 &nbsp;
-export const useFilterProducts = <span class="fstat-no" title="function not covered" >(p</span>roducts: Product[]) =&gt; {
-  const [filteredProducts, setFilteredProducts] = <span class="cstat-no" title="statement not covered" >useState&lt;Product[]&gt;(products);</span>
+export const useFilterProducts = (products: Product[]) =&gt; {
+  const [filteredProducts, setFilteredProducts] = useState&lt;Product[]&gt;(products);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >    setFilteredProducts(products);</span>
+  useEffect(() =&gt; {
+    setFilteredProducts(products);
   }, [products]);
 &nbsp;
-  const filterBySearch = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>earchTerm: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (searchTerm === '') {</span>
-<span class="cstat-no" title="statement not covered" >      setFilteredProducts(products);</span>
+  const filterBySearch = (searchTerm: string) =&gt; {
+    if (searchTerm === '') {
+      setFilteredProducts(products);
     } else {
-      const lowerCaseTerm = <span class="cstat-no" title="statement not covered" >searchTerm.toLowerCase();</span>
-      const filtered = <span class="cstat-no" title="statement not covered" >products.filter(</span>
-<span class="fstat-no" title="function not covered" >        (p</span>roduct) =&gt;
-<span class="cstat-no" title="statement not covered" >          product.title.toLowerCase().includes(lowerCaseTerm) ||</span>
+      const lowerCaseTerm = searchTerm.toLowerCase();
+      const filtered = products.filter(
+        (product) =&gt;
+          product.title.toLowerCase().includes(lowerCaseTerm) ||
           product.description.toLowerCase().includes(lowerCaseTerm)
       );
-<span class="cstat-no" title="statement not covered" >      setFilteredProducts(filtered);</span>
+      setFilteredProducts(filtered);
     }
   };
 &nbsp;
-  const filterByCategory = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(c</span>ategory: string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (category === '') {</span>
-<span class="cstat-no" title="statement not covered" >      setFilteredProducts(products);</span>
+  const filterByCategory = (category: string) =&gt; {
+    if (category === '') {
+      setFilteredProducts(products);
     } else {
-      const filtered = <span class="cstat-no" title="statement not covered" >products.filter(<span class="fstat-no" title="function not covered" >product =&gt; <span class="cstat-no" title="statement not covered" >p</span>roduct.category === category);</span></span>
-<span class="cstat-no" title="statement not covered" >      setFilteredProducts(filtered);</span>
+      const filtered = products.filter(product =&gt; product.category === category);
+      setFilteredProducts(filtered);
     }
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return { filteredProducts, filterBySearch, filterByCategory };</span>
+  return { filteredProducts, filterBySearch, filterByCategory };
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -175,7 +175,7 @@ export const useFilterProducts = <span class="fstat-no" title="function not cove
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-24T08:07:41.270Z
+                at 2024-10-25T06:22:12.541Z
             </div>
         <script src="../prettify.js"></script>
         <script>

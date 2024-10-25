@@ -27,7 +27,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount, cartPrice }) => 
           <div className="cartContainer">
             <Icon icon={faShoppingCart} onNavigate={() => handleNavigation("/resume")} />
             <span className="cartCount">{cartCount}</span>
-            <text>| Pay: ${cartPrice.toFixed(2)}</text>
+            <p>| Pay: ${cartPrice.toFixed(2)}</p>
           </div>
         </nav>
       </div>

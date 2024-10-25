@@ -1,7 +1,6 @@
 import Title from "../components/Title/Title";
 import "../styles/styleResume.css";
 import { Product } from "../models/Product";
-import { useCart } from "../hooks/useCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus, faLocation, faLocationDot, faMapLocationDot, faPhone, faTrash, faUserPen, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import FooterLayout from "../layouts/Footer/FooterLayout";
@@ -10,11 +9,24 @@ import { useValidation } from "../hooks/useValidation";
 import { validDistricts } from '../data/districts';
 import HeaderLayout from "../layouts/Header/HeaderLayout";
 import ComboBox from "../components/ComboBox/ComboBox";
+import { useCartContext } from "../hooks/cartContext";
+import { useHandlePay } from "../hooks/useHandlePay";
 
 
 const ResumePage = () => {
 
-    const { cart, clearProduct, incrementQuantity, decrementQuantity, cartPrice, cartCount } = useCart();
+    const { state, dispatch } = useCartContext();
+    const handleIncrementQuantity = (productId: number) => {
+        dispatch({ type: "INCREMENT_QUANTITY", productId });
+      };
+      const handleDecrementQuantity = (productId: number) => {
+        dispatch({ type: "DECREMENT_QUANTITY", productId });
+      };
+      const handleClearProduct = (productId: number) => {
+        dispatch({ type: "CLEAR_PRODUCT", productId });
+      };
+      const cartCount = state.cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
+      const cartPrice = state.cart.reduce((acc, item) => acc + (item.price * (item.quantity || 0)), 0);
  
     const {
         name, handleNameChange,
@@ -24,8 +36,16 @@ const ResumePage = () => {
         reference, handleReferenceChange,
         phone, handlePhoneChange,
         error,
-        handlePay
     } = useValidation();
+    
+   
+
+    const { handlePay } = useHandlePay();
+
+    const handlePaymentClick = () => {
+      const customerData = { name, lastName, district, address, reference, phone };
+      handlePay(customerData, error); 
+    };
     
     return (
         <div className="resumeContainer">
@@ -41,8 +61,8 @@ const ResumePage = () => {
                     <h3>Eliminar</h3>
                 </div>
 
-                {cart.length > 0 ? (
-                    cart.map((product: Product) => {
+                {state.cart.length > 0 ? (
+                    state.cart.map((product: Product) => {
                         const totalPriceForProduct = product.price * (product.quantity || 0);
                         return (
                             <div key={product.id} className="resumeProducts">
@@ -50,12 +70,12 @@ const ResumePage = () => {
                                 <h3>{product.title}</h3>
                                 <h3>$ {product.price}</h3>
                                 <div className="quantityProduct">
-                                    <FontAwesomeIcon className="quantityButton" onClick={() => decrementQuantity(product.id)} icon={faCircleMinus} />
+                                    <FontAwesomeIcon className="quantityButton" onClick={() => handleDecrementQuantity(product.id)} icon={faCircleMinus} data-testid="decrementQuantity"/>
                                     <h3>{product.quantity}</h3>
-                                    <FontAwesomeIcon className="quantityButton" onClick={() => incrementQuantity(product.id)} icon={faCirclePlus} />
+                                    <FontAwesomeIcon className="quantityButton" onClick={() => handleIncrementQuantity(product.id)} icon={faCirclePlus} data-testid="incrementQuantity"/>
                                 </div>
                                 <h3>${totalPriceForProduct.toFixed(2)}</h3>
-                                <FontAwesomeIcon className="deleteButton" onClick={() => clearProduct(product.id)} icon={faTrash} />
+                                <FontAwesomeIcon className="deleteButton" onClick={() => handleClearProduct(product.id)} icon={faTrash} data-testid="clearProduct"/>
                             </div>
 
                         )
@@ -131,7 +151,7 @@ const ResumePage = () => {
                     errorMessage="Ingrese un número de celular válido"
                     showError = {error.phone}
                 />
-                <button className="buttonPay" onClick={handlePay}>Pagar</button>
+                <button className="buttonPay" onClick={handlePaymentClick} data-testid="payButton">Pagar</button>
             </div>
             <FooterLayout />
         </div>
