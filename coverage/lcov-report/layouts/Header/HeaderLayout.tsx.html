@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/14</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.23% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/13</span>
+                <span class='fraction'>12/13</span>
             </div>
         
             
@@ -113,21 +113,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,7 +136,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "./styleHeader.css";
 import logoImage from "../../assets/images/imageLogo.jpg";
 &nbsp;
@@ -151,20 +151,20 @@ type HeaderLayoutProps = {
 &nbsp;
 const HeaderLayout: React.FC&lt;HeaderLayoutProps&gt; = ({ cartCount, cartPrice }) =&gt; {
   const navigate = useNavigate();
-  const handleNavigation = <span class="fstat-no" title="function not covered" >(p</span>ath:string) =&gt; {
-<span class="cstat-no" title="statement not covered" >    navigate(path);</span>
+  const handleNavigation = (path:string) =&gt; {
+    navigate(path);
   }
   
   return (
       &lt;div className="headerContainer"&gt;
         &lt;div className="logoContainer"&gt;
-          &lt;img src={logoImage} className="logoImage" /&gt;
+          &lt;img src={logoImage} className="logoImage" data-testid="logoImage"/&gt;
         &lt;/div&gt;
         &lt;nav className="containerIcon"&gt;
-          &lt;Icon icon={faHome}  onNavigate={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleNavigation("/")} /&gt;</span>
-          &lt;Icon icon={faUser}  onNavigate={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleNavigation("/profile")} /&gt;</span>
+          &lt;Icon icon={faHome}  onNavigate={() =&gt; handleNavigation("/")} data-testid="navHome"/&gt;
+          &lt;Icon icon={faUser}  onNavigate={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleNavigation("/profile")} d</span>ata-testid="navProfile" /&gt;
           &lt;div className="cartContainer"&gt;
-            &lt;Icon icon={faShoppingCart} onNavigate={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >h</span>andleNavigation("/resume")} /&gt;</span>
+            &lt;Icon icon={faShoppingCart} onNavigate={() =&gt; handleNavigation("/resume")} data-testid="navResume" /&gt;
             &lt;span className="cartCount"&gt;{cartCount}&lt;/span&gt;
             &lt;p&gt;| Pay: ${cartPrice.toFixed(2)}&lt;/p&gt;
           &lt;/div&gt;
@@ -181,7 +181,7 @@ export default HeaderLayout;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-25T06:22:12.541Z
+                at 2024-10-25T15:40:45.098Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

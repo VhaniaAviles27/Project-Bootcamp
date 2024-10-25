@@ -19,13 +19,13 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount, cartPrice }) => 
   return (
       <div className="headerContainer">
         <div className="logoContainer">
-          <img src={logoImage} className="logoImage" />
+          <img src={logoImage} className="logoImage" data-testid="logoImage"/>
         </div>
         <nav className="containerIcon">
-          <Icon icon={faHome}  onNavigate={() => handleNavigation("/")} />
-          <Icon icon={faUser}  onNavigate={() => handleNavigation("/profile")} />
+          <Icon icon={faHome}  onNavigate={() => handleNavigation("/")} data-testid="navHome"/>
+          <Icon icon={faUser}  onNavigate={() => handleNavigation("/profile")} data-testid="navProfile" />
           <div className="cartContainer">
-            <Icon icon={faShoppingCart} onNavigate={() => handleNavigation("/resume")} />
+            <Icon icon={faShoppingCart} onNavigate={() => handleNavigation("/resume")} data-testid="navResume" />
             <span className="cartCount">{cartCount}</span>
             <p>| Pay: ${cartPrice.toFixed(2)}</p>
           </div>
