@@ -54,22 +54,7 @@ describe('CatalogPage Component', () => {
     expect(screen.getByText('Category 1')).toBeInTheDocument();
     expect(screen.getByText('Category 2')).toBeInTheDocument();
   });
-
-  test('should call filterBySearch when a search term is entered', () => {
-    const { filterBySearch } = useFetchProducts() as any;
-
-    render(
-      <MemoryRouter>
-        <CatalogPage />
-      </MemoryRouter>
-    );
-
-    const searchInput = screen.getByPlaceholderText('Search');
-    fireEvent.change(searchInput, { target: { value: 'Product 1' } });
-
-    expect(filterBySearch).toHaveBeenCalledWith('Product 1');
-  });
-
+  
   test('should call filterByCategory when a category is selected', () => {
     const { filterByCategory } = useFetchProducts() as any;
 

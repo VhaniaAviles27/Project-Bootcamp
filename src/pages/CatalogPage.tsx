@@ -47,7 +47,7 @@ const CatalogPage = () => {
       <Title title={"PRODUCTOS"} />
       <div className="catalogContent">
         <div className="orderContainer">
-          <Search onSearch={filterBySearch} />
+          <Search onSearch={filterBySearch} data-testid = "search" />
           <ComboBox
             options={categories.map((category) => ({
               value: category.slug,
