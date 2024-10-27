@@ -1,0 +1,39 @@
+.comboBoxWrapper {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .comboBoxContainer {
+    display: flex;
+    margin-top: 8px;
+    width: 100%;
+    
+    align-items: center;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  
+  .comboBoxIcon {
+    position: absolute;
+    left: 10px;
+    pointer-events: none;
+  }
+  
+  .principalCbo {
+    padding-block: 10px;
+    width: 100%;
+    padding-left: 30px;
+    border-radius: 5px;
+    border-color: rgb(199, 199, 199);
+  }
+  
+  .invalid .principalCbo {
+    border-color: red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 12px;
+  }
+  
