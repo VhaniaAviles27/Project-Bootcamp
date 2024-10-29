@@ -6,17 +6,19 @@ import "../styles/styleLogin.css";
 import { useNavigate } from "react-router-dom";
 import { useHandleAuth } from '../hooks/usehandleAuth';
 import { useValidation } from "../hooks/useValidation";
+import { RoutePaths } from "../routes/routesConfig";
 
 
 const LoginPage = () => {
   const { user, handleUserChange, password, handlePasswordChange, error } = useValidation();
   const { handleAuth } = useHandleAuth();
   const navigate = useNavigate();
+  
 
-  const handleLogin = async () => {
+  const handleLogin = async (path:string) => {
     const isAuthenticated = await handleAuth(user, password);
     if (isAuthenticated) {
-      navigate('/');
+      navigate(path);
     }
   };
 
@@ -45,7 +47,7 @@ const LoginPage = () => {
         textButton="Inicie Sesión"
         aditionalText="¿Olvidó su contraseña?"
         testId="loginButton"
-        onAction={handleLogin}
+        onAction={()=>handleLogin(RoutePaths.HOME)}
       />
     </div>
   );

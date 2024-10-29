@@ -1,4 +1,3 @@
-// ProfilePage.tsx
 import { useEffect, useState } from "react";
 import FooterLayout from "../layouts/Footer/FooterLayout";
 import HeaderLayout from "../layouts/Header/HeaderLayout";
@@ -8,13 +7,14 @@ import Title from "../components/Title/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../routes/routesConfig";
 
 const ProfilePage = () => {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    navigate("/login");
+  const handleLogout = async (path: string) => {
+    navigate(path);
   };
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -44,7 +44,7 @@ const ProfilePage = () => {
             <p>User: {user.username}</p>
             <p>Email: {user.email}</p>
           </div>
-          <div className="logout" onClick={handleLogout}>
+          <div className="logout" onClick={()=> handleLogout(RoutePaths.LOGIN)}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             <p>Cerrar Sesión</p>
           </div>

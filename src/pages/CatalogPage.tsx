@@ -60,7 +60,6 @@ const CatalogPage = () => {
             selectedValue={selectedCategory} 
           />
         </div>
-
         <div className="productContainer">
           {filteredProducts.map((product: Product) => (
             <Card

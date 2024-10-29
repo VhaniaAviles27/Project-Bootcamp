@@ -1,9 +1,9 @@
 import "./styleHeader.css";
 import logoImage from "../../assets/images/imageLogo.jpg";
-
 import { faHome, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Icon from "../../components/Icon/Icon";
 import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../../routes/routesConfig";
 
 type HeaderLayoutProps = {
   cartCount: number;
@@ -22,10 +22,10 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ cartCount, cartPrice }) => 
           <img src={logoImage} className="logoImage" data-testid="logoImage"/>
         </div>
         <nav className="containerIcon">
-          <Icon icon={faHome}  onNavigate={() => handleNavigation("/")} data-testid="navHome"/>
-          <Icon icon={faUser}  onNavigate={() => handleNavigation("/profile")} data-testid="navProfile" />
+          <Icon icon={faHome}  onNavigate={() => handleNavigation(RoutePaths.HOME)} data-testid="navHome"/>
+          <Icon icon={faUser}  onNavigate={() => handleNavigation(RoutePaths.PROFILE)} data-testid="navProfile" />
           <div className="cartContainer">
-            <Icon icon={faShoppingCart} onNavigate={() => handleNavigation("/resume")} data-testid="navResume" />
+            <Icon icon={faShoppingCart} onNavigate={() => handleNavigation(RoutePaths.RESUME)} data-testid="navResume" />
             <span className="cartCount">{cartCount}</span>
             <p>| Pay: ${cartPrice.toFixed(2)}</p>
           </div>
