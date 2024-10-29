@@ -56,16 +56,6 @@
     margin-block: 20px;
 }
 
-.buttonPay {
-    cursor: pointer;
-    background-color: var(--hover-color);
-    border-color: var(--secondary-color);
-    border-radius: 5px;
-    padding-block: 10px;
-    width: 100%;
-    font-weight: bolder;
-    font-size: 15px;
-}
 
 @media (max-width: 690px) {
     .productImage {

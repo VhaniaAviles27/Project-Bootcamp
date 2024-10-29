@@ -1,0 +1,68 @@
+.profileData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding-block: 50px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  background-color: #e6e3e343;
+}
+
+.profileUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.profileUser img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.profileUser p {
+  color: #737373;
+  font-size: 12px;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #333;
+  margin-block: 20px;
+  gap: 5px;
+}
+
+.profileDetails p {
+  color: #21204e;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 50px;
+}
+.logout {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    background-color: #c0c2c489;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.logout:hover {
+    background-color: #f90808aa;
+}
+.logout p {
+    font-size: 12px;
+}

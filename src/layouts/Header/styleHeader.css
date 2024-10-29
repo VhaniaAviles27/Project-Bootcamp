@@ -37,6 +37,13 @@
     }   
 }
 
+@media (max-width: 1200px) {
+    .headerContainer {
+        display: flex;
+        justify-content: space-between;
+    }   
+}
+
 @media (max-width: 690px) {
     .headerContainer {
         display: flex;

@@ -1,30 +1,34 @@
 import { useState } from "react";
 import "../styles/styleCatalog.css";
 import Card from "../components/Card/Card";
-import { useFetchProducts } from "../hooks/useFetchProducts";
-import { useFetchCategories } from "../hooks/useFetchCategories";
 import HeaderLayout from "../layouts/Header/HeaderLayout";
 import FooterLayout from "../layouts/Footer/FooterLayout";
 import Title from "../components/Title/Title";
-import { Product } from "../models/Product";
 import Search from "../components/Search/Search";
 import Carousel from "../components/Carousel/Carousel";
 import ComboBox from "../components/ComboBox/ComboBox";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { useCartContext } from "../hooks/cartContext";
+import { CATEGORIES_URL, PRODUCTS_URL } from "../utils/apiEndpoints";
+import { useFetchData } from "../hooks/useFetchData";
+import { useFilterProducts } from "../hooks/useFilterProducts";
+import { Product } from "../models/Product";
+import { Category } from "../models/Category";
 
 const CatalogPage = () => {
-  const { products, loading, error, filterBySearch, filterByCategory } = useFetchProducts();
-  const { categories, error: categoryError } = useFetchCategories();
+  const { data: products, loading, error } = useFetchData<Product>(PRODUCTS_URL);
+  const { data: categories } = useFetchData<Category>(CATEGORIES_URL);
+  const { filterBySearch, filterByCategory, filteredProducts } = useFilterProducts(products);
+
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const { state, dispatch } = useCartContext();
   const cartCount = state.cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
   const cartPrice = state.cart.reduce((acc, item) => acc + (item.price * (item.quantity || 0)), 0);
+  
   const handleAddProduct = (product: Product) => {
     dispatch({ type: "ADD_PRODUCT", product });
   };
-  
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     filterByCategory(category)
@@ -36,9 +40,7 @@ const CatalogPage = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  if (categoryError) {
-    return <div>Error: {categoryError}</div>;
-  }
+
 
   return (
     <div className="catalogContainer">
@@ -60,7 +62,7 @@ const CatalogPage = () => {
         </div>
 
         <div className="productContainer">
-          {products.map((product: Product) => (
+          {filteredProducts.map((product: Product) => (
             <Card
               key={product.id}
               imageSrc={product.thumbnail}

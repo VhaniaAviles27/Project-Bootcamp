@@ -11,4 +11,3 @@ export const validateInputPersonalData = (value: string) => {
     const onlyNumbers = /^[0-9]+$/;
     return value.length === 9 && onlyNumbers.test(value);
   };
-  
