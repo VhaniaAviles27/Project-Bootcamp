@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/styleCatalog.css";
 import Card from "../components/Card/Card";
 import HeaderLayout from "../layouts/Header/HeaderLayout";
@@ -14,25 +14,50 @@ import { useFetchData } from "../hooks/useFetchData";
 import { useFilterProducts } from "../hooks/useFilterProducts";
 import { Product } from "../models/Product";
 import { Category } from "../models/Category";
+import usePagination from "../utils/usePagination";
+
+const ITEMS_PER_PAGE = 10;
 
 const CatalogPage = () => {
-  const { data: products, loading, error } = useFetchData<Product>(PRODUCTS_URL);
+  const {
+    data: products,
+    loading,
+    error,
+  } = useFetchData<Product>(PRODUCTS_URL);
+
   const { data: categories } = useFetchData<Category>(CATEGORIES_URL);
-  const { filterBySearch, filterByCategory, filteredProducts } = useFilterProducts(products);
+
+  const { filterBySearch, filterByCategory, filteredProducts } =
+    useFilterProducts(products);
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const { state, dispatch } = useCartContext();
-  const cartCount = state.cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
-  const cartPrice = state.cart.reduce((acc, item) => acc + (item.price * (item.quantity || 0)), 0);
-  
+  const cartCount = state.cart.reduce(
+    (acc, item) => acc + (item.quantity || 0),
+    0
+  );
+  const cartPrice = state.cart.reduce(
+    (acc, item) => acc + item.price * (item.quantity || 0),
+    0
+  );
+
   const handleAddProduct = (product: Product) => {
     dispatch({ type: "ADD_PRODUCT", product });
   };
+
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    filterByCategory(category)
+    filterByCategory(category);
+    goToPage(1);
   };
+
+  const { currentItems, currentPage, totalPages, goToPage } =
+    usePagination<Product>(filteredProducts, ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    goToPage(1);
+  }, [filteredProducts]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -41,7 +66,6 @@ const CatalogPage = () => {
     return <div>Error: {error}</div>;
   }
 
-
   return (
     <div className="catalogContainer">
       <HeaderLayout cartCount={cartCount} cartPrice={cartPrice} />
@@ -49,19 +73,19 @@ const CatalogPage = () => {
       <Title title={"PRODUCTOS"} />
       <div className="catalogContent">
         <div className="orderContainer">
-          <Search onSearch={filterBySearch} data-testid = "search" />
+          <Search onSearch={filterBySearch} data-testid="search" />
           <ComboBox
             options={categories.map((category) => ({
               value: category.slug,
               label: category.name,
             }))}
-            icon = {faDatabase}
-            onSelect={handleCategorySelect} 
-            selectedValue={selectedCategory} 
+            icon={faDatabase}
+            onSelect={handleCategorySelect}
+            selectedValue={selectedCategory}
           />
         </div>
         <div className="productContainer">
-          {filteredProducts.map((product: Product) => (
+          {currentItems.map((product: Product) => (
             <Card
               key={product.id}
               imageSrc={product.thumbnail}
@@ -73,6 +97,26 @@ const CatalogPage = () => {
               onAddProductToCart={() => handleAddProduct(product)}
             />
           ))}
+        </div>
+
+        <div className="pagination">
+          <button
+            onClick={() => goToPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </button>
+          <span>
+            Página {currentPage} de {totalPages}
+          </span>
+          <button
+            onClick={() => {
+              goToPage(currentPage + 1);
+            }}
+            disabled={currentPage === totalPages}
+          >
+            Siguiente
+          </button>
         </div>
       </div>
       <FooterLayout />
