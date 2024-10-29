@@ -3,11 +3,8 @@
     justify-content: space-between;
     align-items: center;
     background-color: white;
-}
-
-.logoContainer {
-    margin-top: 20px;
-    margin-bottom: 15px;
+    gap: 50px;
+    margin-bottom: 25px;
 }
 
 .logoImage {
@@ -34,6 +31,7 @@
     .headerContainer {
         display: flex;
         justify-content: space-between;
+        
     }   
 }
 
@@ -48,6 +46,7 @@
     .headerContainer {
         display: flex;
         flex-direction: column;
+        gap: 20px
     }
 
 }
@@ -55,5 +54,6 @@
     .headerContainer {
         display: flex;
         flex-direction: column;
+        
     }
 }

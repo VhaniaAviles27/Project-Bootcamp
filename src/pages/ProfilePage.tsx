@@ -16,6 +16,7 @@ const ProfilePage = () => {
   const handleLogout = async (path: string) => {
     navigate(path);
   };
+  
   useEffect(() => {
     const userData = localStorage.getItem("user");
     if (userData) {
