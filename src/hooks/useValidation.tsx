@@ -3,7 +3,7 @@ import { validateInputAddress, validateInputPersonalData, validateInputPhone } f
 
 export const useValidation = () => {
   const [name, setName] = useState("");
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [lastName, setLastName] = useState("");
   const [district, setDistrict] = useState("");
@@ -13,7 +13,7 @@ export const useValidation = () => {
   
   const [error, setError] = useState({
     name: false,
-    user: false,
+    username: false,
     password: false,
     lastName: false,
     district: false,
@@ -28,7 +28,7 @@ export const useValidation = () => {
   };
 
   const handleUserChange = (value: string) => {
-    setUser(value);
+    setUsername(value);
     setError(prev => ({ ...prev, user: value === "" }));
   };
 
@@ -64,7 +64,7 @@ export const useValidation = () => {
 
   return {
     name, handleNameChange,
-    user, handleUserChange,
+    username, handleUserChange,
     password, handlePasswordChange,
     lastName, handleLastNameChange,
     district, handleDistrictChange,
