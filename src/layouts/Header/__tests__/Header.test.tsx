@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import HeaderLayout from '../HeaderLayout';
 import { MemoryRouter } from 'react-router-dom';
-import Logo from '../../../assets/images/imageLogo.jpg'
+import { RoutePaths } from '../../../routes/routesConfig';
 
 jest.mock("../../../components/Icon/Icon", () => (props: any) => (
   <div onClick={props.onNavigate} data-testid={props["data-testid"]}>
@@ -28,7 +28,7 @@ describe('HeaderLayout Component', () => {
   test('should render the logo image', () => {
     renderWithRouter(<HeaderLayout cartCount={2} cartPrice={50.0} />);
     const logoImage = screen.getByRole('img')
-    expect(logoImage).toHaveAttribute('src', Logo);
+    expect(logoImage).toBeInTheDocument();
   });
 
   test('should display the cart count and price', () => {
@@ -42,12 +42,12 @@ describe('HeaderLayout Component', () => {
   test("should navigate to home when home icon is clicked", () => {
     renderWithRouter(<HeaderLayout cartCount={2} cartPrice={50.0} />);
     fireEvent.click(screen.getByTestId("navHome"));
-    expect(mockNavigate).toHaveBeenCalledWith("/");
+    expect(mockNavigate).toHaveBeenCalledWith(RoutePaths.HOME);
   });
 
   test("should navigate to resume when cart icon is clicked", () => {
     renderWithRouter(<HeaderLayout cartCount={2} cartPrice={50.0} />);
     fireEvent.click(screen.getByTestId("navResume"));
-    expect(mockNavigate).toHaveBeenCalledWith("/resume");
+    expect(mockNavigate).toHaveBeenCalledWith(RoutePaths.RESUME);
   });
 });

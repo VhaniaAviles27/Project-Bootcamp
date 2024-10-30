@@ -1,8 +1,8 @@
 import React from "react";
-import CatalogPage from "../pages/CatalogPage";
-import ResumePage from "../pages/ResumePage";
-import ProfilePage from "../pages/ProfilePage";
-import LoginPage from "../pages/LoginPage";
+import CatalogPage from "../pages/Catalog/CatalogPage";
+import ResumePage from "../pages/Resume/ResumePage";
+import ProfilePage from "../pages/Profile/ProfilePage";
+import LoginPage from "../pages/Login/LoginPage";
 
 interface RouteConfig {
   path: string;

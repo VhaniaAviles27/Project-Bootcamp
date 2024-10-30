@@ -5,6 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 describe("Input Component", () => {
   const defaultProps = {
+    type: "text",
     value: "",
     onChange: jest.fn(),
     typeData: "Nombre",

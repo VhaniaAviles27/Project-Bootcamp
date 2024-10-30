@@ -4,17 +4,19 @@ import "./styleInput.css";
 
 interface InputProps {
   value: string;
+  type: string;
   onChange: (value: string) => void;
   typeData: string;
   icon: IconProp;
   placeholder: string;
-  errorMessage: string;
-  showError: boolean;
+  errorMessage?: string;
+  showError?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
   value,
   onChange,
+  type,
   typeData,
   icon,
   placeholder,
@@ -34,7 +36,7 @@ const Input: React.FC<InputProps> = ({
       <div className={`inputContent ${showError ? "invalid" : ""}`}>
         <FontAwesomeIcon icon={icon} />
           <input
-            type="text"
+            type= {type}
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
